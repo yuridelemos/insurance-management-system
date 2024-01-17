@@ -1,2 +1,4 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+﻿using _2802_POO.ContentContext;
+
+var curso = new Course();
+curso.Id = Guid.NewGuid();
