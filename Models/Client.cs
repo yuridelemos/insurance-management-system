@@ -8,5 +8,6 @@ public class Client : User
 
     }
     public IList<Insurance> Insurances { get; set; } = new List<Insurance>();
+    public int TotalInsurances => Insurances.Count;
 
 }

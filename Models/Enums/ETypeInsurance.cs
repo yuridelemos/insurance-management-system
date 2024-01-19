@@ -8,3 +8,4 @@ public enum ETypeInsurance
     Health = 4,
     Travel = 5
 }
+

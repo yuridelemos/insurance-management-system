@@ -4,7 +4,7 @@ namespace _2802_POO.Controllers
 {
     public class BrokerController
     {
-        private List<Broker> brokers = new List<Broker>();
+        internal List<Broker> brokers = new List<Broker>();
 
         public void Register()
         {

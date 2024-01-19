@@ -5,7 +5,7 @@ namespace _2802_POO.Controllers;
 
 public class InsuranceCompanyController
 {
-    private List<InsuranceCompany> insuranceCompanies = new List<InsuranceCompany>();
+    internal List<InsuranceCompany> insuranceCompanies = new List<InsuranceCompany>();
     public void Register()
     {
         var name = Console.ReadLine();

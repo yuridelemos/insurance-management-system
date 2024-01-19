@@ -15,7 +15,21 @@ var mapfre = new InsuranceCompany
     "mapfre@mapfreseguro.com"
 );
 
-var teste = new BrokerController();
+var Anpla = new Broker
+(
+    "Anpla",
+     32711154000188,
+    "Anpla@Anplaseguro.com"
+);
+
+var Teste = new Broker
+(
+    "Teste",
+    610741750001338,
+    "Teste@Testseeguro.com"
+);
+
+var teste = new InsuranceController();
 teste.Register();
 teste.List();
 
