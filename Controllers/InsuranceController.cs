@@ -11,7 +11,9 @@ namespace _2802_POO.Controllers
             var company = new InsuranceCompanyController();
             company.List();
             System.Console.Write("Selecione a Seguradora que deseja: ");
-            var companySelect = 0; //int.Parse(Console.ReadLine());
+            int userChoice;
+            if (int.TryParse(Console.ReadLine(), out userChoice) && userChoice >= 1 && userChoice <= company.insuranceCompanies.Count)
+                InsuranceCompany companySelect = company.insuranceCompanies[userChoice - 1];
             var broker = new BrokerController();
             broker.List();
             var brokerSelect = 0; //int.Parse(Console.ReadLine());

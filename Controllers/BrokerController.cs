@@ -22,14 +22,11 @@ namespace _2802_POO.Controllers
             brokers.Add(broker);
             System.Console.WriteLine("Corretora cadastrada com sucesso.");
         }
-        public void List()
-        {
-            foreach (var item in brokers)
-            {
-                System.Console.WriteLine(item.Name);
-                System.Console.WriteLine(item.RegistrationNumber);
-            }
-        }
+        public void List() =>
+            brokers
+                .Select((seg, index) => $"{index + 1}. {seg.Name}")
+                .ToList()
+                .ForEach(Console.WriteLine);
 
     }
 }

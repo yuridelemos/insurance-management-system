@@ -16,12 +16,9 @@ public class InsuranceCompanyController
         insuranceCompanies.Add(company);
         System.Console.WriteLine("Seguradora cadastrada com sucesso.");
     }
-    public void List()
-    {
-        foreach (var item in insuranceCompanies)
-        {
-            System.Console.WriteLine(item.Name);
-            System.Console.WriteLine(item.RegistrationNumber);
-        }
-    }
+    public void List() =>
+            insuranceCompanies
+                .Select((seg, index) => $"{index + 1}. {seg.Name}")
+                .ToList()
+                .ForEach(Console.WriteLine);
 }
