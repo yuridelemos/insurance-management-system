@@ -3,8 +3,8 @@ namespace _2802_POO.ContentContext;
 public class InsuranceCompany : User
 {
 
-    public InsuranceCompany(string name, long registrationNumber, string email)
-        : base(name, registrationNumber, email)
+    public InsuranceCompany(int id, string name, long registrationNumber, string email)
+        : base(id, name, registrationNumber, email)
     {
         Brokers = new List<Broker>();
         Insurances = new List<Insurance>();

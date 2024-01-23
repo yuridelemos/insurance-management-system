@@ -2,7 +2,8 @@ namespace _2802_POO.ContentContext;
 
 public class Broker : User
 {
-    public Broker(string name, long registrationNumber, string email) : base(name, registrationNumber, email)
+    public Broker(int id, string name, long registrationNumber, string email)
+    : base(id, name, registrationNumber, email)
     {
     }
 

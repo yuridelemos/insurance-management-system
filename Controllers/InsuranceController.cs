@@ -5,50 +5,57 @@ namespace _2802_POO.Controllers
 {
     public class InsuranceController
     {
+        private InsuranceCompanyController CompanyController;
+        private BrokerController BrokerController;
         private List<Insurance> insurances = new List<Insurance>();
+        public InsuranceController(
+            InsuranceCompanyController companyController,
+            BrokerController brokerController)
+        {
+            CompanyController = companyController;
+            BrokerController = brokerController;
+        }
         public void Register()
         {
-            var company = new InsuranceCompanyController();
-            company.List();
-            System.Console.Write("Selecione a Seguradora que deseja: ");
-            int userChoice;
-            if (int.TryParse(Console.ReadLine(), out userChoice) && userChoice >= 1 && userChoice <= company.insuranceCompanies.Count)
-                InsuranceCompany companySelect = company.insuranceCompanies[userChoice - 1];
-            var broker = new BrokerController();
-            broker.List();
-            var brokerSelect = 0; //int.Parse(Console.ReadLine());
+            BrokerController.List();
+            var brokerChoice = BrokerController.SelectBroker();
+            CompanyController.List();
+            Console.Write("Selecione a Seguradora que deseja: ");
+            int companyChoice = int.Parse(Console.ReadLine());
+            Console.WriteLine("(1) - Vida");
+            Console.WriteLine("(2) - Auto");
+            Console.WriteLine("(3) - Residencial");
+            Console.WriteLine("(4) - Saúde");
+            Console.WriteLine("(5) - Viagem");
+            Console.Write("Digite o tipo de seguro: ");
+            ETypeInsurance insuranceSelect;
+            if (Enum.TryParse(Console.ReadLine(), out insuranceSelect) && Enum.IsDefined(typeof(ETypeInsurance), insuranceSelect))
+                Console.WriteLine($"Você escolheu: {insuranceSelect}");
+            else
+                Console.WriteLine("Opção inválida.");
+            Console.Write("Digite o valor de seguro: ");
+            var value = decimal.Parse(Console.ReadLine(), System.Globalization.CultureInfo.InvariantCulture);
+
             var date = DateTime.Now;
 
-            System.Console.WriteLine("(1) - Vida");
-            System.Console.WriteLine("(2) - Auto");
-            System.Console.WriteLine("(3) - Residencial");
-            System.Console.WriteLine("(4) - Saúde");
-            System.Console.WriteLine("(5) - Viagem");
-
-            var insuranceSelect = ETypeInsurance.Life; //int.Parse(Console.ReadLine());
-            var value = 100m; //decimal.Parse(Console.ReadLine());
-
-            var porto =
-                    company.insuranceCompanies.ElementAt(companySelect).Name;
-            broker.brokers.ElementAt(brokerSelect);
-
             var insurance = new Insurance(
-                company.insuranceCompanies.ElementAt(companySelect),
-                broker.brokers.ElementAt(brokerSelect),
+                brokerChoice,
                 date,
                 insuranceSelect,
-                value);
-            System.Console.WriteLine("Seguradora cadastrada com sucesso.");
+                value
+            );
+            insurances.Add(insurance);
+            CompanyController.AddInsurance(companyChoice, insurance);
+            BrokerController.AddBroker(brokerChoice, insurance);
         }
         public void List()
         {
             foreach (var item in insurances)
             {
-                System.Console.WriteLine(item.Company);
-                System.Console.WriteLine(item.Broker);
-                System.Console.WriteLine(item.ContractDate);
-                System.Console.WriteLine(item.Type);
-                System.Console.WriteLine(item.Value);
+                Console.WriteLine(item.Broker.Name);
+                Console.WriteLine(item.ContractDate);
+                Console.WriteLine(item.Type);
+                Console.WriteLine(item.Value.ToString("N2", System.Globalization.CultureInfo.InvariantCulture));
             }
         }
     }
