@@ -2,8 +2,8 @@ namespace _2802_POO.ContentContext;
 
 public class Client : User
 {
-    public Client(string name, long registrationNumber, string email, Insurance insurance)
-        : base(name, registrationNumber, email)
+    public Client(int id, string name, long registrationNumber, string email, Insurance insurance)
+        : base(id, name, registrationNumber, email)
     {
 
     }
