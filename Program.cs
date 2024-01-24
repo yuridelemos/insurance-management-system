@@ -2,15 +2,18 @@
 using _2802_POO.Controllers;
 
 
-InsuranceCompanyController companyController = new InsuranceCompanyController();
+InsuranceCompanyController insuranceCompanyController = new InsuranceCompanyController();
 BrokerController brokerController = new BrokerController();
-InsuranceController insuranceController = new InsuranceController(companyController, brokerController);
+InsuranceController insuranceController = new InsuranceController(insuranceCompanyController, brokerController);
+ClientController clientController = new ClientController();
 
-brokerController.Register();
-companyController.Register();
-insuranceController.Register();
-insuranceController.List();
-
+ManagementSystem managementSystem = new ManagementSystem(
+    insuranceCompanyController,
+    brokerController,
+    insuranceController,
+    clientController);
+managementSystem.DataLoading();
+managementSystem.Run();
 public class DataContext<B, C, I, IC>
     where B : Broker
     where C : Client
