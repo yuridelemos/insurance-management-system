@@ -7,21 +7,22 @@ public class InsuranceController
 {
     private InsuranceCompanyController CompanyController;
     private BrokerController BrokerController;
+    private ClientController ClientController;
     private List<Insurance> insurances = new List<Insurance>();
     public InsuranceController(
         InsuranceCompanyController companyController,
-        BrokerController brokerController)
+        BrokerController brokerController,
+        ClientController clientController)
     {
         CompanyController = companyController;
         BrokerController = brokerController;
+        ClientController = clientController;
     }
     public void Register()
     {
-        BrokerController.List();
+        var clientChoice = ClientController.SelectClient();
         var brokerChoice = BrokerController.SelectBroker();
-        CompanyController.List();
-        Console.Write("Selecione a Seguradora que deseja: ");
-        int companyChoice = int.Parse(Console.ReadLine());
+        var companyChoice = CompanyController.SelectCompany();
         Console.WriteLine("(1) - Vida");
         Console.WriteLine("(2) - Auto");
         Console.WriteLine("(3) - Residencial");
@@ -45,8 +46,9 @@ public class InsuranceController
             value
         );
         insurances.Add(insurance);
-        CompanyController.AddInsurance(companyChoice, insurance);
-        BrokerController.AddBroker(brokerChoice, insurance);
+        BrokerController.AddData(brokerChoice, insurance, clientChoice);
+        CompanyController.AddData(companyChoice, insurance, brokerChoice);
+        ClientController.AddData(clientChoice, insurance);
     }
     public void List()
     {

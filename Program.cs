@@ -2,16 +2,17 @@
 using _insurance_management_system.Controllers;
 
 
-InsuranceCompanyController insuranceCompanyController = new InsuranceCompanyController();
-BrokerController brokerController = new BrokerController();
-InsuranceController insuranceController = new InsuranceController(insuranceCompanyController, brokerController);
 ClientController clientController = new ClientController();
+BrokerController brokerController = new BrokerController();
+InsuranceCompanyController insuranceCompanyController = new InsuranceCompanyController();
+InsuranceController insuranceController = new InsuranceController(insuranceCompanyController, brokerController, clientController);
 
 ManagementSystem managementSystem = new ManagementSystem(
     insuranceCompanyController,
     brokerController,
     insuranceController,
     clientController);
+
 managementSystem.DataLoading();
 managementSystem.Run();
 public class DataContext<B, C, I, IC>
