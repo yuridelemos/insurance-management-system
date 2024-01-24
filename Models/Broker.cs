@@ -5,6 +5,8 @@ public class Broker : User
     public Broker(int id, string name, long registrationNumber, string email)
     : base(id, name, registrationNumber, email)
     {
+        Clients = new List<Client>();
+        Insurances = new List<Insurance>();
     }
 
     public IList<Client> Clients { get; set; } = new List<Client>();

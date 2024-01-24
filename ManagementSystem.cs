@@ -97,6 +97,12 @@ class ManagementSystem
             "Anpla",
             61074175000138,
             "anpla@anplacorretora.com"));
+        clientController.clients.Add(new Client(
+            1,
+            "Yuri",
+            12345678901,
+            "yuri@yuri.com"
+            ));
 
 
     }

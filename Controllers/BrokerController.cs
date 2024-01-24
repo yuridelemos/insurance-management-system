@@ -23,22 +23,24 @@ public class BrokerController
 
     public Broker SelectBroker()
     {
+        List();
         Console.Write("Selecione a Corretora que deseja: ");
         var id = int.Parse(Console.ReadLine());
         var itemAdd = brokers.Find(broker => broker.Id == id);
         if (itemAdd != null)
             return itemAdd;
         else
-            Console.WriteLine($"Seguradora não encontrada.");
+            Console.WriteLine($"Corretora não encontrada.");
         return SelectBroker();
     }
 
 
-    public void AddBroker(Broker broker, Insurance insurance)
+    public void AddData(Broker broker, Insurance insurance, Client client)
     {
-        var itemAdd = brokers.Find(insuranceCompany => insuranceCompany.Id == broker.Id);
+        var itemAdd = brokers.Find(item => item.Id == broker.Id);
         if (itemAdd != null)
         {
+            itemAdd.Clients.Add(client);
             itemAdd.Insurances.Add(insurance);
             Console.WriteLine($"Novo seguro adicionado para {itemAdd.Name}: {insurance.Type}");
         }

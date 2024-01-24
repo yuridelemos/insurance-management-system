@@ -21,11 +21,26 @@ public class InsuranceCompanyController
                 .ToList()
                 .ForEach(Console.WriteLine);
 
-    public void AddInsurance(int id, Insurance insurance)
+    public InsuranceCompany SelectCompany()
     {
-        var itemAdd = insuranceCompanies.Find(insuranceCompany => insuranceCompany.Id == id);
+        List();
+        Console.Write("Selecione a Seguradora que deseja: ");
+        var id = int.Parse(Console.ReadLine());
+        var itemAdd = insuranceCompanies.Find(company => company.Id == id);
+        if (itemAdd != null)
+            return itemAdd;
+        else
+            Console.WriteLine($"Seguradora não encontrada.");
+        return SelectCompany();
+    }
+
+
+    public void AddData(InsuranceCompany company, Insurance insurance, Broker broker)
+    {
+        var itemAdd = insuranceCompanies.Find(item => item.Id == company.Id);
         if (itemAdd != null)
         {
+            itemAdd.Brokers.Add(broker);
             itemAdd.Insurances.Add(insurance);
             Console.WriteLine($"Novo seguro adicionado para {itemAdd.Name}: {insurance.Type}");
         }
