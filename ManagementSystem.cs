@@ -1,5 +1,5 @@
-using _2802_POO.ContentContext;
-using _2802_POO.Controllers;
+using _insurance_management_system.ContentContext;
+using _insurance_management_system.Controllers;
 
 class ManagementSystem
 {

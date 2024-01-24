@@ -1,6 +1,6 @@
-﻿using _2802_POO.Models.Enums;
+﻿using _insurance_management_system.Models.Enums;
 
-namespace _2802_POO.ContentContext;
+namespace _insurance_management_system.ContentContext;
 
 public class Insurance
 {

@@ -1,4 +1,4 @@
-namespace _2802_POO.Controllers;
+namespace _insurance_management_system.Controllers;
 
 public class ClientController
 {

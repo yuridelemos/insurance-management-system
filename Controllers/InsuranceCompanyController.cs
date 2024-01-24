@@ -1,6 +1,6 @@
-using _2802_POO.ContentContext;
+using _insurance_management_system.ContentContext;
 
-namespace _2802_POO.Controllers;
+namespace _insurance_management_system.Controllers;
 
 public class InsuranceCompanyController
 {

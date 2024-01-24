@@ -1,4 +1,4 @@
-namespace _2802_POO.ContentContext;
+namespace _insurance_management_system.ContentContext;
 
 public class InsuranceCompany : User
 {

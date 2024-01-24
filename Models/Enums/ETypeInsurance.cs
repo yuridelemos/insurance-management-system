@@ -1,4 +1,4 @@
-﻿namespace _2802_POO.Models.Enums;
+﻿namespace _insurance_management_system.Models.Enums;
 
 public enum ETypeInsurance
 {
