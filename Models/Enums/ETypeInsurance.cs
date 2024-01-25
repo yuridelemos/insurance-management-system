@@ -2,10 +2,10 @@
 
 public enum ETypeInsurance
 {
-    Life = 1,
-    Car = 2,
-    Home = 3,
-    Health = 4,
-    Travel = 5
+    Vida = 1,
+    Auto = 2,
+    Residencial = 3,
+    Saude = 4,
+    Viagem = 5
 }
 

@@ -7,22 +7,33 @@ public class InsuranceCompanyController
     internal List<InsuranceCompany> insuranceCompanies = new List<InsuranceCompany>();
     public void Register()
     {
+        Console.WriteLine("======= Cadastro =======");
+        Console.Write("Nome: ");
         var name = Console.ReadLine();
+        Console.Write("CNPJ: ");
         var registration = long.Parse(Console.ReadLine());
+        Console.Write("E-mail: ");
         var email = Console.ReadLine();
-
-        var company = new InsuranceCompany((insuranceCompanies.Count+1),name, registration, email);
-
+        insuranceCompanies.Add(new InsuranceCompany((
+            insuranceCompanies.Count + 1),
+            name,
+            registration,
+            email));
+        Thread.Sleep(1000);
+        Console.Clear();
         Console.WriteLine("Seguradora cadastrada com sucesso.");
     }
     public void List() =>
             insuranceCompanies
-                .Select((seg, index) => $"{index + 1}. {seg.Name}")
+            .Select((item, index) => $"({index + 1}) - {item.Name}")
                 .ToList()
                 .ForEach(Console.WriteLine);
 
     public InsuranceCompany SelectCompany()
     {
+        Thread.Sleep(500);
+        Console.WriteLine();
+        Console.WriteLine("======= Seleção de Seguradora =======");
         List();
         Console.Write("Selecione a Seguradora que deseja: ");
         var id = int.Parse(Console.ReadLine());
@@ -33,7 +44,6 @@ public class InsuranceCompanyController
             Console.WriteLine($"Seguradora não encontrada.");
         return SelectCompany();
     }
-
 
     public void AddData(InsuranceCompany company, Insurance insurance, Broker broker)
     {
@@ -46,10 +56,5 @@ public class InsuranceCompanyController
         }
         else
             Console.WriteLine($"Seguradora não encontrada.");
-
-        foreach (var item in insuranceCompanies)
-        {
-            Console.WriteLine($"{item.Name} - {item.Insurances.Count}");
-        }
     }
 }

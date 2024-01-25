@@ -1,5 +1,7 @@
 using _insurance_management_system.ContentContext;
 using _insurance_management_system.Models.Enums;
+using System;
+using System.Reflection;
 
 namespace _insurance_management_system.Controllers;
 
@@ -23,6 +25,9 @@ public class InsuranceController
         var clientChoice = ClientController.SelectClient();
         var brokerChoice = BrokerController.SelectBroker();
         var companyChoice = CompanyController.SelectCompany();
+        Thread.Sleep(500);
+        Console.WriteLine();
+        Console.WriteLine("======= Escolha de Seguro =======");
         Console.WriteLine("(1) - Vida");
         Console.WriteLine("(2) - Auto");
         Console.WriteLine("(3) - Residencial");
@@ -46,6 +51,8 @@ public class InsuranceController
             value
         );
         insurances.Add(insurance);
+        Thread.Sleep(1000);
+        Console.Clear();
         BrokerController.AddData(brokerChoice, insurance, clientChoice);
         CompanyController.AddData(companyChoice, insurance, brokerChoice);
         ClientController.AddData(clientChoice, insurance);
@@ -53,11 +60,13 @@ public class InsuranceController
     public void List()
     {
         foreach (var item in insurances)
-        {
-            Console.WriteLine(item.Broker.Name);
-            Console.WriteLine(item.ContractDate);
-            Console.WriteLine(item.Type);
-            Console.WriteLine(item.Value.ToString("N2", System.Globalization.CultureInfo.InvariantCulture));
-        }
+            Console.WriteLine(
+                $"{item.Broker.Name} - " +
+                $"{item.ContractDate} - " +
+                $"{item.Type} - R$ " +
+                $"{item.Value
+                .ToString("N2", System.Globalization
+                .CultureInfo
+                .InvariantCulture)}");
     }
 }

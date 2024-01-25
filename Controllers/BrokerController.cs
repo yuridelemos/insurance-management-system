@@ -8,23 +8,35 @@ public class BrokerController
 
     public void Register()
     {
+        Console.WriteLine("======= Cadastro =======");
+        Console.Write("Nome: ");
         var name = Console.ReadLine();
+        Console.Write("CNPJ: ");
         var registration = long.Parse(Console.ReadLine());
+        Console.Write("E-mail: ");
         var email = Console.ReadLine();
-        var broker = new Broker((brokers.Count+1), name, registration, email);
-        brokers.Add(broker);
-        Console.WriteLine("Corretora cadastrada com sucesso.");
+        brokers.Add(new Broker((
+            brokers.Count + 1),
+            name,
+            registration,
+            email));
+        Thread.Sleep(1000);
+        Console.Clear();
+        Console.WriteLine("Corretora cadastrado(a) com sucesso.");
     }
     public void List() =>
         brokers
-            .Select((seg, index) => $"{index + 1}. {seg.Name}")
+            .Select((item, index) => $"({index + 1}) - {item.Name}")
             .ToList()
             .ForEach(Console.WriteLine);
 
     public Broker SelectBroker()
     {
+        Thread.Sleep(500);
+        Console.WriteLine();
+        Console.WriteLine("======= Seleção de Corretora =======");
         List();
-        Console.Write("Selecione a Corretora que deseja: ");
+        Console.Write("Selecione o(a) Corretora que deseja: ");
         var id = int.Parse(Console.ReadLine());
         var itemAdd = brokers.Find(broker => broker.Id == id);
         if (itemAdd != null)
@@ -33,7 +45,6 @@ public class BrokerController
             Console.WriteLine($"Corretora não encontrada.");
         return SelectBroker();
     }
-
 
     public void AddData(Broker broker, Insurance insurance, Client client)
     {
@@ -46,10 +57,5 @@ public class BrokerController
         }
         else
             Console.WriteLine($"Seguradora não encontrada.");
-
-        foreach (var item in brokers)
-        {
-            Console.WriteLine($"{item.Name} - {item.Insurances.Count}");
-        }
     }
 }
