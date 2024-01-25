@@ -72,7 +72,7 @@ class ManagementSystem
                     Console.WriteLine("Opção inválida. Tente novamente.");
                     break;
             }
-
+            Console.WriteLine();
             Console.WriteLine("Pressione qualquer tecla para continuar...");
             Console.ReadKey();
         }
