@@ -1,7 +1,5 @@
 using _insurance_management_system.ContentContext;
 using _insurance_management_system.Models.Enums;
-using System;
-using System.Reflection;
 
 namespace _insurance_management_system.Controllers;
 
@@ -24,7 +22,7 @@ public class InsuranceController
     {
         var clientChoice = ClientController.SelectClient();
         var brokerChoice = BrokerController.SelectBroker();
-        var companyChoice = CompanyController.SelectCompany();
+        var companyChoice = CompanyController.SelectInsuranceCompany();
         Thread.Sleep(500);
         Console.WriteLine();
         Console.WriteLine("======= Escolha de Seguro =======");
@@ -55,7 +53,7 @@ public class InsuranceController
         Console.Clear();
         BrokerController.AddData(brokerChoice, insurance, clientChoice);
         CompanyController.AddData(companyChoice, insurance, brokerChoice);
-        ClientController.AddData(clientChoice, insurance);
+        ClientController.AddData(clientChoice, insurance, null);
     }
     public void List()
     {
