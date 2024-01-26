@@ -5,9 +5,9 @@ namespace _insurance_management_system.Controllers;
 public class InsuranceCompanyController : Controller<InsuranceCompany>
 {
     internal List<InsuranceCompany> insuranceCompanies = new List<InsuranceCompany>();
-    public void Register() => base.Register();
-    public void List() => base.List();
-    public InsuranceCompany SelectInsuranceCompany() => base.SelectItem();
+    public void Register() => base.Register(insuranceCompanies);
+    public void List() => base.List(insuranceCompanies);
+    public InsuranceCompany SelectInsuranceCompany() => base.SelectItem(insuranceCompanies);
 
     public override void AddData(InsuranceCompany company, object entity1, object entity2)
     {

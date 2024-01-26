@@ -5,10 +5,9 @@ namespace _insurance_management_system.Controllers;
 public class BrokerController : Controller<Broker>
 {
     internal List<Broker> brokers = new List<Broker>();
-
-    public void Register() => base.Register();
-    public void List() => base.List();
-    public Broker SelectBroker() => base.SelectItem();
+    public void Register() => base.Register(brokers);
+    public void List() => base.List(brokers);
+    public Broker SelectBroker() => base.SelectItem(brokers);
 
     public override void AddData(Broker broker, object entity1, object entity2)
     {

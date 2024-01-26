@@ -5,10 +5,9 @@ namespace _insurance_management_system.Controllers;
 public class ClientController : Controller<Client>
 {
     internal List<Client> clients = new List<Client>();
-
-    public void Register() => base.Register();
-    public void List() => base.List();
-    public Client SelectClient() => base.SelectItem();
+    public void Register() => base.Register(clients);
+    public void List() => base.List(clients);
+    public Client SelectClient() => base.SelectItem(clients);
 
     public override void AddData(Client client, object entity1, object entity2)
     {
